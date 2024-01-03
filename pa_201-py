@@ -1,0 +1,217 @@
+import json
+import os
+import openai
+from openai import OpenAI
+
+
+
+
+def open_file(filepath):
+    with open(filepath, 'r', encoding='utf-8') as infile:
+        return infile.read()
+
+def save_file(filepath, content):
+    with open(filepath, 'w', encoding='utf-8') as outfile:
+        outfile.write(content)
+
+openai_api_key = open_file('c:\\my\\git\\api-keys\\openaiapikey.txt')
+# openai_api_key = userdata.get('openai')
+client = OpenAI(api_key=openai_api_key)
+
+def load_user_history(user_id):
+    history_file = f"{user_id}_history.json"
+    if os.path.exists(history_file):
+        with open(history_file, "r") as file:
+            history = json.load(file)
+    else:
+        history = []
+    return history
+
+def save_user_history(user_id, history):
+    history_file = f"{user_id}_history.json"
+    with open(history_file, "w") as file:
+        json.dump(history, file)
+
+def create_thread(user_id):
+    # Create a new thread with a unique ID
+    return f"thread_{user_id}"
+
+
+def add_message_to_thread(thread_id, role, content):
+    history_file = f"{thread_id}_history.json"
+    history = []
+    if os.path.exists(history_file):
+        with open(history_file, "r") as file:
+            history = json.load(file)
+    
+    history.append({"role": role, "content": content})
+
+    with open(history_file, "w") as file:
+        json.dump(history, file)
+
+def get_recent_context(thread_id):
+    history_file = f"{thread_id}_history.json"
+    if os.path.exists(history_file):
+        with open(history_file, "r") as file:
+            history = json.load(file)
+            # Fetch a specific number of recent messages for context
+            return history[-5:]  # You can adjust this number as needed
+    return []
+
+
+# def get_recent_context(thread_id):
+#     history_file = f"{thread_id}_history.json"
+#     if os.path.exists(history_file):
+#         with open(history_file, "r") as file:
+#             history = json.load(file)
+#             # print(history)
+#             return history
+#     return []
+
+# def get_recent_context(thread_id):
+#     history_file = f"{thread_id}_history.json"
+#     if os.path.exists(history_file):
+#         with open(history_file, "r") as file:
+#             history = json.load(file)
+#             # Retrieve the last few messages for context
+#             recent_context = history[-5:]  # Adjust the number as needed
+#             return recent_context
+#     return []
+
+
+def generate_response(thread_id, input_text):
+    if input_text.strip() == "":
+        return "Hello! How can I assist you today?"
+
+    recent_context = get_recent_context(thread_id)
+    messages = [{"role": "system", "content": "You are a helpful assistant."}]
+
+    for message in recent_context:
+        # Map the roles from history file to API expected roles
+        role = message['role'].lower()
+        if role == "user":
+            role = "user"
+        elif role == "pa":
+            role = "assistant"
+        else:
+            role = "user"  # Default to 'user' if the role is not recognized
+
+        messages.append({"role": role, "content": message['content']})
+
+    messages.append({"role": "user", "content": input_text})
+    print(messages)
+
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo-1106",
+            temperature=0.6,
+            frequency_penalty=0.2,
+            messages=messages
+        )
+        
+        return response.choices[0].message.content
+        # return response['choices'][0]['message']['content']
+    except Exception as e:
+        return f"An error occurred: {e}"
+
+
+# def generate_response(thread_id, input_text):
+#     if input_text.strip() == "":
+#         return "Hello! How can I assist you today?"
+
+#     recent_context = get_recent_context(thread_id)
+#     messages = [{"role": "system", "content": "You are a helpful assistant."}]
+
+#     for message in recent_context:
+#         # Validate the role for each message
+#         if message['role'] in ['system', 'assistant', 'user', 'function']:
+#             role = message['role']
+#         else:
+#             role = 'user'  # Default to 'user' if the role is not one of the accepted values
+#         messages.append({"role": role, "content": message['content']})
+
+#     messages.append({"role": "user", "content": input_text})
+
+#     try:
+#         response = client.chat.completions.create(
+#             model="gpt-3.5-turbo-1106",
+#             temperature=0.6,
+#             frequency_penalty=0.2,
+#             messages=messages
+#         )
+#         return response.choices[0].message.content
+#         # return response['choices'][0]['message']['content']
+#     except Exception as e:
+#         return f"An error occurred: {e}"
+
+
+# def generate_response(thread_id, input_text):
+#     if input_text.strip() == "":
+#         return "Hello! How can I assist you today?"
+
+#     recent_context = get_recent_context(thread_id)
+#     messages = [{"role": "system", "content": "You are a helpful assistant."}]
+
+#     for message in recent_context:
+#         # Ensure the role is one of the accepted values
+#         role = message['role'] if message['role'] in ['system', 'assistant', 'user', 'function'] else 'user'
+#         messages.append({"role": role, "content": message['content']})
+
+#     messages.append({"role": "user", "content": input_text})
+
+#     try:
+#         response = client.chat.completions.create(
+#             model="gpt-3.5-turbo-1106",
+#             temperature=0.6,
+#             frequency_penalty=0.2,
+#             messages=messages
+#         )
+#         # Correctly accessing the response content
+#         return response.choices[0].message.content #response['choices'][0]['message']['content']
+#     except Exception as e:
+#         return f"An error occurred: {e}"
+
+
+def main():
+    user_id = "user123"
+    thread_id = create_thread(user_id)
+
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() in ["exit", "goodbye"]:
+            print("PA: Goodbye! Saving your notes...")
+            save_user_history(user_id, get_recent_context(thread_id))
+            break
+
+        add_message_to_thread(thread_id, "User", user_input)
+        response = generate_response(thread_id, user_input)
+        print("PA: ", response)
+        add_message_to_thread(thread_id, "PA", response)
+
+if __name__ == "__main__":
+    main()
+
+
+# def main():
+#     user_id = "user123"
+#     thread_id = create_thread(user_id)
+
+#     while True:
+#         user_input = input("You: ")
+#         add_message_to_thread(thread_id, "User", user_input)
+#         response = generate_response(thread_id, user_input)
+#         print("PA: ", response)
+#         add_message_to_thread(thread_id, "PA", response)
+
+# def main():
+#     user_id = "user123"
+#     thread_id = create_thread(user_id)
+
+#     while True:
+#         user_input = input("You: ")
+#         add_message_to_thread(thread_id, "User", user_input)
+#         response = generate_response(user_input)
+#         # response = generate_response(thread_id, user_input)
+#         print("PA: ", response)
+#         add_message_to_thread(thread_id, "PA", response)
+
