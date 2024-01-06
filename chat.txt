@@ -1,0 +1,152 @@
+hi
+Hello! How can I assist you today?
+You: hi
+Assistant: Hello! How can I assist you today?
+who are you
+I am a virtual assistant here to help and assist you with any questions or tasks you may have. How can I assist you today?
+You: who are you
+Assistant: I am a virtual assistant here to help and assist you with any questions or tasks you may have. How can I assist you today?
+i am Lasse
+Nice to meet you, Lasse! How can I assist you today?
+You: i am Lasse
+Assistant: Nice to meet you, Lasse! How can I assist you today?
+what do you know of good scifi movies from 2023
+I'm sorry, but as a virtual assistant, I do not have information on specific movies from the future. However, I can provide recommendations for popular sci-fi movies from previous years if you'd like.
+You: what do you know of good scifi movies from 2023
+Assistant: I'm sorry, but as a virtual assistant, I do not have information on specific movies from the future. However, I can provide recommendations for popular sci-fi movies from previous years if you'd like.
+yes please
+Thank you! Here are some popular sci-fi movies from previous years that you might enjoy:
+
+- "Blade Runner 2049" (2017)
+- "Arrival" (2016)
+- "Ex Machina" (2014)
+- "The Martian" (2015)
+- "Inception" (2010)
+
+These are just a few options, but there are many more great sci-fi movies out there. Let me know if you need more recommendations or if there's anything else I can help you with!
+You: yes please
+Assistant: Thank you! Here are some popular sci-fi movies from previous years that you might enjoy:
+
+- "Blade Runner 2049" (2017)
+- "Arrival" (2016)
+- "Ex Machina" (2014)
+- "The Martian" (2015)
+- "Inception" (2010)
+
+These are just a few options, but there are many more great sci-fi movies out there. Let me know if you need more recommendations or if there's anything else I can help you with!
+what is your newest data
+As an AI language model, I don't have real-time data or information about the newest releases. My knowledge is based on the information available up to a certain point in time. If you have specific questions or need assistance with something else, feel free to ask and I'll do my best to help!
+You: what is your newest data
+Assistant: As an AI language model, I don't have real-time data or information about the newest releases. My knowledge is based on the information available up to a certain point in time. If you have specific questions or need assistance with something else, feel free to ask and I'll do my best to help!
+what is your newes scifi movie recommendation
+Thank you! I'm here to assist you with any questions or tasks you may have. If you need a recommendation for the newest sci-fi movies, I recommend checking out the latest releases on popular streaming platforms or movie review websites. They often have up-to-date information on the newest sci-fi movies available. Let me know if there's anything else I can help you with!
+You: what is your newes scifi movie recommendation
+Assistant: Thank you! I'm here to assist you with any questions or tasks you may have. If you need a recommendation for the newest sci-fi movies, I recommend checking out the latest releases on popular streaming platforms or movie review websites. They often have up-to-date information on the newest sci-fi movies available. Let me know if there's anything else I can help you with!
+import openai
+Thank you! If you have any other questions or need assistance with anything else, feel free to ask. I'm here to help!
+You: import openai
+Assistant: Thank you! If you have any other questions or need assistance with anything else, feel free to ask. I'm here to help!
+from openai import OpenAI
+Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+You: from openai import OpenAI
+Assistant: Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+def open_file(filepath):
+It looks like you're trying to import and define a function to open a file using the OpenAI library. If you have specific questions about using the OpenAI library or need assistance with coding, feel free to ask and I'll do my best to help!
+You: def open_file(filepath):
+Assistant: It looks like you're trying to import and define a function to open a file using the OpenAI library. If you have specific questions about using the OpenAI library or need assistance with coding, feel free to ask and I'll do my best to help!
+    with open(filepath, 'r', encoding='utf-8') as infile:
+Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+You:     with open(filepath, 'r', encoding='utf-8') as infile:
+Assistant: Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+        return infile.read()
+Thank you! I'm here to assist you with any questions or tasks you may have. If there's anything else you need help with, feel free to ask!
+You:         return infile.read()
+Assistant: Thank you! I'm here to assist you with any questions or tasks you may have. If there's anything else you need help with, feel free to ask!
+
+Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+You: 
+Assistant: Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+def save_file(filepath, content):
+It seems like you're working on defining a function to save content to a file. If you need assistance with coding or have any specific questions about file operations, feel free to ask and I'll be happy to help!
+You: def save_file(filepath, content):
+Assistant: It seems like you're working on defining a function to save content to a file. If you need assistance with coding or have any specific questions about file operations, feel free to ask and I'll be happy to help!
+    with open(filepath, 'w', encoding='utf-8') as outfile:
+Thank you! I'm here to assist you with any questions or tasks you may have. If there's anything else you need help with, feel free to ask!
+You:     with open(filepath, 'w', encoding='utf-8') as outfile:
+Assistant: Thank you! I'm here to assist you with any questions or tasks you may have. If there's anything else you need help with, feel free to ask!
+        outfile.write(content)
+Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+You:         outfile.write(content)
+Assistant: Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+
+Thank you! I'm here to assist you with any questions or tasks you may have. If there's anything else you need help with, feel free to ask!
+You: 
+Assistant: Thank you! I'm here to assist you with any questions or tasks you may have. If there's anything else you need help with, feel free to ask!
+openai_api_key = open_file('c:\\my\\git\\api-keys\\openaiapikey.txt')
+Thank you! I'm here to assist you with any questions or tasks you may have. If there's anything else you need help with, feel free to ask!
+You: openai_api_key = open_file('c:\\my\\git\\api-keys\\openaiapikey.txt')
+Assistant: Thank you! I'm here to assist you with any questions or tasks you may have. If there's anything else you need help with, feel free to ask!
+# openai_api_key = userdata.get('openai')
+Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+You: # openai_api_key = userdata.get('openai')
+Assistant: Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+
+Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+You: 
+Assistant: Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+client = OpenAI(api_key=openai_api_key)
+Thank you! I'm here to assist with any questions or tasks you may have. Let me know if there's anything else I can help you with!
+You: client = OpenAI(api_key=openai_api_key)
+Assistant: Thank you! I'm here to assist with any questions or tasks you may have. Let me know if there's anything else I can help you with!
+gpt4 = "gpt-4-1106-preview"
+Thank you! I'm here to help with any questions or tasks you may have. If there's anything else you need assistance with, feel free to ask!
+You: gpt4 = "gpt-4-1106-preview"
+Assistant: Thank you! I'm here to help with any questions or tasks you may have. If there's anything else you need assistance with, feel free to ask!
+gpt3 = "gpt-3.5-turbo-1106"
+Thank you! I'm here to help with any questions or tasks you may have. If there's anything else you need assistance with, feel free to ask!
+You: gpt3 = "gpt-3.5-turbo-1106"
+Assistant: Thank you! I'm here to help with any questions or tasks you may have. If there's anything else you need assistance with, feel free to ask!
+chatbot_role = "You are a helpful personal assistant"
+Thank you! I'm here to assist you in any way I can. If you have any questions or need help with anything else, feel free to ask!
+You: chatbot_role = "You are a helpful personal assistant"
+Assistant: Thank you! I'm here to assist you in any way I can. If you have any questions or need help with anything else, feel free to ask!
+def chatgpt3 (userinput, temperature=0.8, frequency_penalty=0.2, presence_penalty=0, system_role=chatbot_role, model = gpt3):
+It looks like you're defining a function to interact with the GPT-3 model for chatbot responses. If you have any specific questions about using the OpenAI API or need assistance with coding, feel free to ask and I'll be happy to help!
+You: def chatgpt3 (userinput, temperature=0.8, frequency_penalty=0.2, presence_penalty=0, system_role=chatbot_role, model = gpt3):
+Assistant: It looks like you're defining a function to interact with the GPT-3 model for chatbot responses. If you have any specific questions about using the OpenAI API or need assistance with coding, feel free to ask and I'll be happy to help!
+    messagein = [
+Thank you! I'm here to assist you with any questions or tasks you may have. Let me know how I can help you further!
+You:     messagein = [
+Assistant: Thank you! I'm here to assist you with any questions or tasks you may have. Let me know how I can help you further!
+        {"role": "user", "content": userinput },
+Thank you! I'm here to assist with any questions or tasks you may have. Let me know if there's anything else I can help you with!
+You:         {"role": "user", "content": userinput },
+Assistant: Thank you! I'm here to assist with any questions or tasks you may have. Let me know if there's anything else I can help you with!
+        {"role": "system", "content": system_role}]
+Thank you for the kind words! I'm here to assist you in any way I can. If you have any questions or need help with anything else, feel free to ask!
+You:         {"role": "system", "content": system_role}]
+Assistant: Thank you for the kind words! I'm here to assist you in any way I can. If you have any questions or need help with anything else, feel free to ask!
+    response = client.chat.completions.create(
+Thank you so much! I'm here to assist you with any questions or tasks you may have. If there's anything specific you'd like to know or if you need help with anything, feel free to ask!
+You:     response = client.chat.completions.create(
+Assistant: Thank you so much! I'm here to assist you with any questions or tasks you may have. If there's anything specific you'd like to know or if you need help with anything, feel free to ask!
+        model = model,
+Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+You:         model = model,
+Assistant: Thank you! I'm here to assist with any questions or tasks you may have. Let me know how I can help you further!
+        temperature=temperature,
+Thank you! I'm here to assist you with any questions or tasks you may have. If there's anything specific you need help with or if you have additional questions, feel free to ask!
+You:         temperature=temperature,
+Assistant: Thank you! I'm here to assist you with any questions or tasks you may have. If there's anything specific you need help with or if you have additional questions, feel free to ask!
+        frequency_penalty=frequency_penalty,
+Thank you! I'm here to assist you in any way I can. If you have any questions or need help with anything else, feel free to ask!
+You:         frequency_penalty=frequency_penalty,
+Assistant: Thank you! I'm here to assist you in any way I can. If you have any questions or need help with anything else, feel free to ask!
+        presence_penalty=presence_penalty,
+Thank you for your kind words! If you have any questions or need assistance with anything else, feel free to ask. I'm here to help!
+You:         presence_penalty=presence_penalty,
+Assistant: Thank you for your kind words! If you have any questions or need assistance with anything else, feel free to ask. I'm here to help!
+        messages=messagein
+Thank you! I'm here to help with any questions or tasks you may have. Let me know how I can assist you further!
+You:         messages=messagein
+Assistant: Thank you! I'm here to help with any questions or tasks you may have. Let me know how I can assist you further!
