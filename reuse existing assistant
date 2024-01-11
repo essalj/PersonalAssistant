@@ -1,0 +1,91 @@
+
+    # "id": "run_WkAnhhGznQGoOyx7bnJyoxCj",
+    # "assistant_id": "asst_Wm56IwxuCUDwIzV8S5SpAREh",
+    # "cancelled_at": null,
+    # "completed_at": null,
+    # "created_at": 1704648855,
+    # "expires_at": 1704649455,
+    # "failed_at": null,
+    # "file_ids": [],
+    # "instructions": "Please address user as Lasse",
+    # "last_error": null,
+    # "metadata": {},
+    # "model": "gpt-4-1106-preview",
+    # "object": "thread.run",
+    # "required_action": null,
+    # "started_at": 1704648855,
+    # "status": "in_progress",
+    # "thread_id": "thread_dUsDPfKhAjrefGxr7RtIC7JU",
+    # "tools": [
+    #     {
+    #         "type": "code_interpreter"
+    #     }
+    # ]
+
+
+import openai
+from openai import OpenAI 
+import time
+import gradio as gr
+
+
+def open_file(filepath):
+    with open(filepath, 'r', encoding='utf-8') as infile:
+        return infile.read()
+
+openai_api_key = open_file('c:\\my\\git\\api-keys\\openaiapikey.txt')
+client = OpenAI(api_key=openai_api_key)
+
+
+##### access existing assistants ####
+def list_assistants():
+    assistant_object = client.beta.assistants.list()
+    return assistant_object
+# print(list_assistants())
+
+def delete_assistant(assistant_id):
+    """Delete an assistant by ID."""
+    delete_url = f"{BASE_URL}/{assistant_id}"
+    response = requests.delete(delete_url, headers=HEADERS)
+    if response.status_code == 200:
+        print(f"Deleted assistant with ID: {assistant_id}")
+    else:
+        print(f"Failed to delete assistant with ID: {assistant_id}. Status Code: {response.status_code}")
+
+def delete_all_assistants():
+    """Delete all assistants."""
+    a_list = list_assistants()
+    assitant_obj_list = a_list.data
+    for i in range(len(assitant_obj_list)):
+        delete_assistant(assitant_obj_list[i].id)
+
+def select_assistant(assistant_id):
+    # Use the 'beta.assistants' attribute, not 'Assistant'
+    assistant = client.beta.assistants.retrieve(assistant_id)
+    return assistant.id
+
+def create_assistant(name, instructions, tools, model):
+    assistant = client.beta.assistants.create(
+        name=name,
+        instructions=instructions,
+        tools=tools,
+        model=model
+    )
+    return assistant.id  # Return the assistant ID
+###############
+
+
+
+def get_assistant_by_id(assistant_id):
+    assistant = client.beta.assistants.retrieve(assistant_id)
+    return assistant.id
+
+
+def create_thread():
+    
+    thread = client.beta.threads.create()
+    return thread
+
+
+def select_assistant(assistant_id):
+    return get_assistant_by_id(assistant_id)
