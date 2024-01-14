@@ -57,7 +57,7 @@ def load_conversation_history(filepath):
 
 def save_chat_history(userinput, response):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    with open('recent_chat.txt', 'a', encoding='utf-8') as outfile:
+    with open('PA_memory/recent_chat.txt', 'a', encoding='utf-8') as outfile:
         outfile.write(f"{timestamp} USER: {userinput}\n")
         outfile.write(f"{timestamp} ASSISTANT: {response}\n")
 
@@ -85,7 +85,7 @@ def chatgpt(userinput, temperature=0.8, frequency_penalty=0.2, presence_penalty=
 
 def personal_assistant():
     global conversation
-    conversation = load_conversation_history('recent_chat.txt')  # Load previous conversation
+    conversation = load_conversation_history('PA_memory/recent_chat.txt')  # Load previous conversation
 
     while True:
         user_input = input("How can I assist you? ")
